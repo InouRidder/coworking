@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :desk do
-    name { "MyString" }
-    price_per_day { "MyString" }
+    name { Faker::GreekPhilosophers.name }
+    price_per_day { rand(5..25) }
   end
 end

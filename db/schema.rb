@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_113540) do
 
   create_table "desks", force: :cascade do |t|
     t.string "name"
-    t.string "price_per_day"
+    t.integer "price_per_day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
