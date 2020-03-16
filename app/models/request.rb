@@ -2,6 +2,8 @@
 
 # Request objects keep track of the state of a requested registration for freelancers.
 class Request < ApplicationRecord
+  belongs_to :registration
+
   enum status: {
     unconfirmed: 'unconfirmed',
     confirmed: 'confirmed',
@@ -10,5 +12,6 @@ class Request < ApplicationRecord
   }
 
   def accept!
+    # Onboarding::Onboarder.call(registration: registration)
   end
 end
