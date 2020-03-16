@@ -11,4 +11,18 @@ class Contract < ApplicationRecord
     paid: 'paid',
     unpaid: 'unpaid'
   }
+
+  def ongoing?
+    end_date >= Date.today
+  end
+
+  def set_total_price
+    self.total_price = duration_in_days * desk.price_per_day
+  end
+
+  private
+
+  def duration_in_days
+    (end_date - start_date).to_i
+  end
 end

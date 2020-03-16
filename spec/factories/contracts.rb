@@ -8,5 +8,10 @@ FactoryBot.define do
     total_price { 1 }
     user { association(:user) }
     desk { association(:desk) }
+
+    trait :expired do
+      start_date { Date.today - 35 }
+      end_date { Date.today - 4 }
+    end
   end
 end
