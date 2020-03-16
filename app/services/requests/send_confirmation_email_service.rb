@@ -15,7 +15,7 @@ module Requests
     private
 
     def send_email
-      RequestMailer.with(request: request).send_confirmation_email.deliver_now
+      request.registration.send_confirmation_instructions
     end
 
     def update_status

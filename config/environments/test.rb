@@ -19,6 +19,8 @@ Rails.application.configure do
     'Cache-Control' => "public, max-age=#{1.hour.to_i}"
   }
 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   config.action_mailer.delivery_method = :test
 
 
