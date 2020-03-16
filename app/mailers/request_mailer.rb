@@ -7,7 +7,7 @@ class RequestMailer < ApplicationMailer
   #
   def send_confirm_interest
     @request = params[:request]
-
+    @position = params[:position]
     mail to: @request.registration.email, subject: 'Are you still interested?'
   end
 end

@@ -6,9 +6,10 @@ module Requests
     queue_as :default
 
     def perform
-      Request.confirmed.includes(:registration).each do |request|
-        if request.last_confirmation_email_sent_at <= Date.today - 10.weeks # allowing a 2 week window to confirm
-          Requests::SendConfirmationEmailService.call(request)
+      Request.confirmed.in_waiting_list_order.includes(:registration).each_with_index do |request, index|
+
+        if request.should_reconfirm?
+          Requests::SendConfirmationEmailService.call(request: request, position: index + 1)
         end
       end
     end
