@@ -11,6 +11,7 @@ module Contracts
         if contract.should_be_renewed?
           contract.renew!
         end
+      end
     end
   end
 end
