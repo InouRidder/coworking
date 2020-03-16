@@ -9,6 +9,7 @@ gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
+gem 'devise'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -19,6 +20,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'webdrivers', '~> 4.0'
   gem 'capybara'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 group :test do
