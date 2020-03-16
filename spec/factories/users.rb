@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :user do
-    registration { nil }
+    registration { association(:registration) }
   end
 end
