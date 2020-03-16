@@ -11,7 +11,7 @@
 
 ### Instructions
 
-`
+
 Your Client is a French Coworking space that rents workstations to freelancers. When someone is accepted into the coworking space, he signs a contract that is renewed automatically every month. Because of the high demand, the Client needs to put in place a waiting list in order to keep track of people wanting to join the coworking.
 The main features that the Client has specified:
 * A public accessible form to collect incoming requests (name, email, phone number, a brief biography about the freelancer). Each field must be validated in order to have data as accurate as possible.
@@ -26,4 +26,4 @@ For the scope of this test, an administration interface is not required. However
 ** Request.accepted - requests that have been accepted by the client
 ** Request.expired - requests that have not been reconfirmed
 The app should be hosted on a free Heroku hosting plan.
-`
+
