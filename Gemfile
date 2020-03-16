@@ -15,8 +15,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'pry-rails'
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'webdrivers', '~> 4.0'
   gem 'capybara'
 end
 
