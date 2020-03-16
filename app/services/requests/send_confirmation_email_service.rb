@@ -8,13 +8,14 @@ module Requests
     end
 
     def call
-      send_email && update_status
+      send_email
+      update_status
     end
 
     private
 
     def send_email
-      RequestMailer.with(request: request).send_confirmattion_email.deliver_later
+      RequestMailer.with(request: request).send_confirmation_email.deliver_now
     end
 
     def update_status
