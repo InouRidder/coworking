@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Contract, type: :model do
+  it do
+    should define_enum_for(:status).
+      with_values(
+        Contract::STATUSES
+      ).
+      backed_by_column_of_type(:string)
+  end
+
   describe '#ongoing?' do
     it 'should return true for an ongoing contract' do
       contract = build(:contract)
