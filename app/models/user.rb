@@ -6,8 +6,10 @@
 class User < ApplicationRecord
   belongs_to :registration
 
-  enum status: {
+  STATUSES = {
     active: 'active',
     inactive: 'inactive'
   }
+
+  enum status: STATUSES
 end
