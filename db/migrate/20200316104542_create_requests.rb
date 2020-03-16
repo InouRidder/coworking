@@ -3,7 +3,7 @@ class CreateRequests < ActiveRecord::Migration[6.0]
     create_table :requests do |t|
       t.string :status, default: 'unconfirmed'
       t.references :registration
-      t.timestamp :last_confirmed_at
+      t.date :last_confirmed_at
 
       t.timestamps
     end

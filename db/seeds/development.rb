@@ -16,8 +16,11 @@ puts 'Creating 10 Desks'
 
 puts 'Creating 15 requests & registrations'
 
-15.times { FactoryBot.create(:request) }
+15.times do
+  status = Request::STATUSES.keys.select { |state| state != :accepted }.sample
+  FactoryBot.create(:request, status: status.to_s)
+end
 
 puts "Accepting #{Request.confirmed.count} requests, creating their contracts"
 
-Request.confirmed.map(&:accept!)
+# Request.confirmed.map(&:accept!)

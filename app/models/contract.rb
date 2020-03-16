@@ -7,10 +7,12 @@ class Contract < ApplicationRecord
   belongs_to :user
   belongs_to :desk
 
-  enum status: {
+  STATUSES = {
     paid: 'paid',
     unpaid: 'unpaid'
   }
+
+  enum status: STATUSES
 
   def ongoing?
     end_date >= Date.today

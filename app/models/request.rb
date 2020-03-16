@@ -4,14 +4,16 @@
 class Request < ApplicationRecord
   belongs_to :registration
 
-  enum status: {
+  STATUSES = {
     unconfirmed: 'unconfirmed',
     confirmed: 'confirmed',
     expired: 'expired',
     accepted: 'accepted'
   }
 
+  enum status: STATUSES
+
   def accept!
-    # Onboarding::Onboarder.call(registration: registration)
+    Requests::Acceptor.call(self)
   end
 end
