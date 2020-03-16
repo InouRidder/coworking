@@ -12,5 +12,9 @@ class Desk < ApplicationRecord
     def first_available
       includes(:contracts).find(&:available?)
     end
+
+    def any_available?
+      any?(&:available?)
+    end
   end
 end
