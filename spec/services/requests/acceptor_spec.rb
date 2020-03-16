@@ -26,8 +26,16 @@ RSpec.describe Requests::Acceptor, type: :unit do
       create(:desk, :with_ongoing_contract)
       acceptor.call(request)
 
-      expect(request.errors[:base][0]).to eq('No desk available')
+      expect(request.errors[:base][0]).to eq(Requests::Acceptor::NO_DESK_AVAILABLE)
       expect(request.registration.user).to be_nil
+    end
+
+    it 'should not accept a request that has any other status than confirmed' do
+      request = build(:request, status: 'unconfirmed')
+      build(:desk)
+      acceptor.call(request)
+
+      expect(request.errors[:base][0]).to eq(Requests::Acceptor::UNACCEPTABLE_STATUS)
     end
   end
 end
