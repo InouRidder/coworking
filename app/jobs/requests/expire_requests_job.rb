@@ -7,7 +7,7 @@ module Requests
 
     def perform
       Request.confirmed.each do |request|
-        if request.last_confirmed_at <= Date.today - 3.months # expire if not reconfirmed after 3 months
+        if request.should_expire? # expire if not reconfirmed after 3 months
           request.expired!
         end
       end

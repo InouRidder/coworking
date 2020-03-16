@@ -6,6 +6,8 @@ class Request < ApplicationRecord
 
   belongs_to :registration
 
+  scope :in_waiting_list_order, -> { order(created_at: :desc) }
+
   STATUSES = {
     unconfirmed: 'unconfirmed',
     confirmed: 'confirmed',
@@ -17,5 +19,13 @@ class Request < ApplicationRecord
 
   def accept!
     Requests::AcceptService.call(self)
+  end
+
+  def should_reconfirm?
+    last_confirmation_email_sent_at <= Date.today - 10.weeks # allowing a 2 week window to confirm
+  end
+
+  def should_expire?
+    last_confirmed_at <= Date.today - 3.months
   end
 end
