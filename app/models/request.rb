@@ -14,6 +14,6 @@ class Request < ApplicationRecord
   enum status: STATUSES
 
   def accept!
-    Requests::Acceptor.call(self)
+    Requests::AcceptService.call(self)
   end
 end

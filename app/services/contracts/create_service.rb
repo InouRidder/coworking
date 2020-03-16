@@ -1,7 +1,7 @@
 # frozen_literal_string: true
 
 module Contracts
-  class Creator < BaseService
+  class CreateService < BaseService
     attr_reader :contract, :desk, :user
     def initialize(attrs)
       @desk = attrs[:desk]

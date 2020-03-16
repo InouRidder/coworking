@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Requests::Acceptor, type: :unit do
-  let(:request) { build(:request) }
-  let(:acceptor) { Requests::Acceptor }
+RSpec.describe Requests::AcceptService, type: :unit do
+  let(:request) { build(:request, status: 'confirmed') }
+  let(:acceptor) { Requests::AcceptService }
 
   let(:call_with_desk) do
     create(:desk)
@@ -26,7 +26,7 @@ RSpec.describe Requests::Acceptor, type: :unit do
       create(:desk, :with_ongoing_contract)
       acceptor.call(request)
 
-      expect(request.errors[:base][0]).to eq(Requests::Acceptor::NO_DESK_AVAILABLE)
+      expect(request.errors[:base][0]).to eq(Requests::AcceptService::NO_DESK_AVAILABLE)
       expect(request.registration.user).to be_nil
     end
 
@@ -35,7 +35,7 @@ RSpec.describe Requests::Acceptor, type: :unit do
       build(:desk)
       acceptor.call(request)
 
-      expect(request.errors[:base][0]).to eq(Requests::Acceptor::UNACCEPTABLE_STATUS)
+      expect(request.errors[:base][0]).to eq(Requests::AcceptService::UNACCEPTABLE_STATUS)
     end
   end
 end

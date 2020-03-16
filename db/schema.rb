@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_113540) do
   create_table "requests", force: :cascade do |t|
     t.string "status", default: "unconfirmed"
     t.bigint "registration_id"
-    t.date "last_confirmed_at"
+    t.date "last_confirmation_email_sent_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["registration_id"], name: "index_requests_on_registration_id"

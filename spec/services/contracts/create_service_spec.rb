@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Contracts::Creator, type: :unit do
-  let(:creator) { Contracts::Creator }
+RSpec.describe Contracts::CreateService, type: :unit do
+  let(:creator) { Contracts::CreateService }
   let(:user) { build(:user) }
   let(:desk) { build(:desk) }
 
