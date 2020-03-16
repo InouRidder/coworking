@@ -23,4 +23,4 @@ end
 
 puts "Accepting #{Request.confirmed.count} requests, creating their contracts"
 
-# Request.confirmed.map(&:accept!)
+Request.confirmed.map(&:accept!)
