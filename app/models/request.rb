@@ -2,6 +2,8 @@
 
 # Request objects keep track of the state of a requested registration for freelancers.
 class Request < ApplicationRecord
+  has_secure_token
+
   belongs_to :registration
 
   STATUSES = {
@@ -14,6 +16,6 @@ class Request < ApplicationRecord
   enum status: STATUSES
 
   def accept!
-    Requests::Acceptor.call(self)
+    Requests::AcceptService.call(self)
   end
 end

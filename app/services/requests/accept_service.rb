@@ -1,7 +1,7 @@
 # frozen_literal_string: true
 
 module Requests
-  class Acceptor < BaseService
+  class AcceptService < BaseService
     NO_DESK_AVAILABLE = 'no desk available'.freeze
     UNACCEPTABLE_STATUS = 'request needs to be confirmed to be accepted'.freeze
 
@@ -31,7 +31,7 @@ module Requests
     end
 
     def create_contract
-      @contract = Contracts::Creator.call(user: user, desk: desk)
+      @contract = Contracts::CreateService.call(user: user, desk: desk)
     end
 
     def update_status

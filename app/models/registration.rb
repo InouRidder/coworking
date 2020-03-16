@@ -6,7 +6,13 @@ class Registration < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :confirmable
   has_one :request
   has_one :user
+
+  def after_confirmation
+    super
+    request.confirmed!
+  end
 end

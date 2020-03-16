@@ -18,6 +18,7 @@ puts 'Creating 15 requests & registrations'
 
 15.times do
   status = Request::STATUSES.keys.select { |state| state != :accepted }.sample
+  puts status
   FactoryBot.create(:request, status: status.to_s)
 end
 

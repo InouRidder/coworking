@@ -30,7 +30,7 @@ RSpec.describe Request, type: :model do
     it 'should not create a user or a contract if no desk is available' do
       request.accept!
 
-      expect(request.errors[:base][0]).to eq(Requests::Acceptor::NO_DESK_AVAILABLE)
+      expect(request.errors[:base][0]).to eq(Requests::AcceptService::NO_DESK_AVAILABLE)
       expect(request.registration.user).to be_nil
     end
   end
