@@ -21,6 +21,7 @@ group :development, :test do
   gem 'webdrivers', '~> 4.0'
   gem 'capybara'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :test do

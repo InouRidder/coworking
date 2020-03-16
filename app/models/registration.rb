@@ -10,4 +10,9 @@ class Registration < ApplicationRecord
          :confirmable
   has_one :request
   has_one :user
+
+  def after_confirmation
+    super
+    request.confirmed!
+  end
 end
