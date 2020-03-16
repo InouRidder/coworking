@@ -6,4 +6,9 @@
 class Contract < ApplicationRecord
   belongs_to :user
   belongs_to :desk
+
+  enum status: {
+    paid: 'paid',
+    unpaid: 'unpaid'
+  }
 end
