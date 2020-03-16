@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Requests::RequestConfirmationsJob, type: :job do
-
+  let(:job) { Requests::RequestConfirmationsJob }
   let(:create_10_confirmed_requests_that_need_reconfirmation) do
     10.times do
       create(:request, status: 'confirmed', last_confirmation_email_sent_at: Date.today - 11.weeks)
@@ -15,13 +15,13 @@ RSpec.describe Requests::RequestConfirmationsJob, type: :job do
       create_10_confirmed_requests_that_need_reconfirmation
 
       expect {
-        Requests::RequestConfirmationsJob.perform_now
+        job.perform_now
       }.to change { ActionMailer::Base.deliveries.count }.by(10)
     end
 
     it 'should update #last_confirmation_email_sent_at attribute for the request' do
       create_10_confirmed_requests_that_need_reconfirmation
-      Requests::RequestConfirmationsJob.perform_now
+      job.perform_now
 
       expect(
         Request.confirmed.all? { |request| request.last_confirmation_email_sent_at == Date.today }
@@ -32,14 +32,14 @@ RSpec.describe Requests::RequestConfirmationsJob, type: :job do
       create(:request, status: 'accepted')
 
       expect {
-        Requests::RequestConfirmationsJob.perform_now
+        job.perform_now
       }.to change { ActionMailer::Base.deliveries.count }.by(0)
     end
 
     it 'should not update the last_confirmation_email_sent_at value of a request with a status other than confirmed' do
       request = create(:request, status: 'accepted')
       expected = request.last_confirmation_email_sent_at
-      Requests::RequestConfirmationsJob.perform_now
+      job.perform_now
 
       expect(request.last_confirmation_email_sent_at).to eq(expected)
     end

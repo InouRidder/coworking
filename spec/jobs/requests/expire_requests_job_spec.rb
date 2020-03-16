@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Requests::RequestConfirmationsJob, type: :job do
-
+RSpec.describe Requests::ExpireRequestsJob, type: :job do
+  let(:job) { Requests::ExpireRequestsJob }
   let(:create_3_confirmed_requests_that_should_expire) do
     3.times do
       create(:request, status: 'confirmed', last_confirmed_at: Date.today - 4.months)
@@ -13,15 +13,14 @@ RSpec.describe Requests::RequestConfirmationsJob, type: :job do
       create_3_confirmed_requests_that_should_expire
 
       expect {
-        Requests::ExpireRequestsJob.perform_now
+        job.perform_now
       }.to change { Request.expired.count }.by(3)
     end
 
     it 'should only expire jobs which have not been reconfirmed in 3 months' do
       request = create(:request, status: 'confirmed', last_confirmed_at: Date.today - 1.month)
-      Requests::RequestConfirmationsJob.perform_now
 
-      Requests::ExpireRequestsJob.perform_now
+      job.perform_now
       expect(request.confirmed?).to be_truthy
     end
   end
