@@ -1,5 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Contracts::RenewJob, type: :job do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#perform' do
+    it 'should renew contracts of users that are still active' do
+    end
+
+    it 'should not renew contracts for users that went inactive' do
+    end
+
+    it 'should free the desk to available again' do
+    end
+  end
 end

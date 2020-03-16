@@ -22,6 +22,14 @@ class Contract < ApplicationRecord
     self.total_price = duration_in_days * desk.price_per_day
   end
 
+  def should_be_renewed?
+    Date.today == end_date && user.active?
+  end
+
+  def renew!
+    Contracts::CreateService.call(user: user, desk: desk)
+  end
+
   private
 
   def duration_in_days
