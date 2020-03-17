@@ -14,6 +14,9 @@ gem 'devise'
 # gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# phone validation
+gem 'phonelib'
+
 # frontend gems
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'

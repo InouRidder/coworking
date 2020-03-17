@@ -11,6 +11,16 @@ class Registration < ApplicationRecord
   has_one :request
   has_one :user
 
+  validates_presence_of :name, :bio
+  validates :email, format: { with: Devise.email_regexp }
+  validates :bio, length: { minimum: 50 }
+  validates :phone, phone: {
+    possible: true,
+    allow_blank: false,
+    types: [:voip, :mobile],
+    countries: %i[FR NL ES GR]
+  }
+
   def after_confirmation
     super
     request.confirmed!

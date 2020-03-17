@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
-  devise_for :registrations, skip: %i[:registrations]
+  devise_for :registrations, skip: %i[registrations]
 
-  resources :requests, only: %i[new create]
+  resources :registrations, only: %i[new create]
   namespace :requests  do
     get :confirmations, to: 'confirmations#update' # no patch requests in mailers
   end
