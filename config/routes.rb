@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :registrations
+  root 'pages#home'
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
-  root 'pages#home'
+  devise_for :registrations, skip: %i[registrations]
 
+  resources :registrations, only: %i[new create]
   namespace :requests  do
     get :confirmations, to: 'confirmations#update' # no patch requests in mailers
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
