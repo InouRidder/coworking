@@ -25,6 +25,7 @@ module Coworking
     config.load_defaults 6.0
 
     config.generators do |g|
+      g.stylesheets = false
       g.test_framework :rspec,
       fixtures: false,
       view_specs: false,

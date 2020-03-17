@@ -10,18 +10,18 @@ User.destroy_all
 Registration.destroy_all
 
 
-puts 'Creating 10 Desks'
+puts 'Creating 30 Desks'
 
-10.times { FactoryBot.create(:desk) }
+30.times { FactoryBot.create(:desk) }
 
-puts 'Creating 15 requests & registrations'
+puts 'Creating 50 requests & registrations'
 
-15.times do
+50.times do
   status = Request::STATUSES.keys.select { |state| state != :accepted }.sample
-  puts status
   FactoryBot.create(:request, status: status.to_s)
 end
 
-puts "Accepting #{Request.confirmed.count} requests, creating their contracts"
+to_confirm = rand(0..(Request.confirmed.count))
+puts "randomly accepting #{to_confirm} requests, creating their contracts"
 
-Request.confirmed.map(&:accept!)
+Request.confirmed.sample(to_confirm).map(&:accept!)

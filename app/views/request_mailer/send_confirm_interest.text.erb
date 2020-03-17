@@ -1,3 +1,4 @@
-Request#send_confirm_interest
+Please confirm you're still interested to work at our Coworking
 
-<%= @greeting %>, find me in app/views/request_mailer/send_confirm_interest.text.erb
+current position in qeue: <%= @position %>
+<%= link_to 'Confirm my interest', requests_confirmations_url(token: @request.token) %>

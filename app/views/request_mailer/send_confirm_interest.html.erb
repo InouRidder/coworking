@@ -5,4 +5,4 @@
   current position in qeue: <%= @position %>
 </h3>
 
-<%= link_to 'Confirm my interest', requests_confirmations_url(token: @request.token)%>
+<%= link_to 'Confirm my interest', requests_confirmations_url(token: @request.token), target: '_blanc' %>
