@@ -31,5 +31,9 @@ module Registrations
         password: temp_password
       )
     end
+
+    def send_welcome_email
+      # TODO: Sent an email including the temp password
+    end
   end
 end
