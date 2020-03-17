@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
-  devise_for :registrations, skip: %i[registrations]
+  devise_for :registrations, skip: %i[registrations], controllers: { confirmations: 'auth/confirmations' }
 
   resources :registrations, only: %i[new create]
   namespace :requests  do

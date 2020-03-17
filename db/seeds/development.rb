@@ -10,7 +10,7 @@ User.destroy_all
 Registration.destroy_all
 
 
-puts 'Creating 30 Desks'
+puts 'Creating 10 Desks'
 
 10.times { FactoryBot.create(:desk) }
 

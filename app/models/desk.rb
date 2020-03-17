@@ -9,6 +9,10 @@ class Desk < ApplicationRecord
     contracts.none?(&:ongoing?)
   end
 
+  def taken?
+    current_user.present?
+  end
+
   def current_user
     @current_user ||= users.last
   end

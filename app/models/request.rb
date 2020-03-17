@@ -6,7 +6,7 @@ class Request < ApplicationRecord
 
   belongs_to :registration
 
-  scope :waiting_list, -> { confirmed.order(created_at: :desc) }
+  scope :waiting_list, -> { confirmed.order(created_at: :asc) }
 
   STATUSES = {
     unconfirmed: 'unconfirmed',

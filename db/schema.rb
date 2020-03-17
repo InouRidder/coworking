@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_113540) do
     t.string "status", default: "unconfirmed"
     t.bigint "registration_id"
     t.string "token"
-    t.date "last_confirmation_email_sent_at"
+    t.date "last_confirmation_email_sent_at", default: -> { "CURRENT_TIMESTAMP" }
     t.date "last_confirmed_at", default: -> { "CURRENT_TIMESTAMP" }
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
