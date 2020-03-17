@@ -24,14 +24,16 @@ gem 'simple_form'
 
 # email simulation
 gem 'letter_opener_web', '~> 1.0'
+
+# seeding - these are in production for test purposes, would place them in :development / :test groups normally.
 gem 'factory_bot_rails'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'webdrivers', '~> 4.0'
   gem 'capybara'
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 group :test do
