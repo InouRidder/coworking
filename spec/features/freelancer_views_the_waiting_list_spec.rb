@@ -9,23 +9,36 @@ feature 'Freelancer views the waiting list' do
     expect(page).to have_content("Desks")
   end
 
-  scenario 'with confirmed email' do
+  scenario 'unconfirmed email views waiting list' do
+    create(:desk)
+    request = create(:request, status: 'unconfirmed')
+
+    visit root_path
+
+    expect(page).not_to have_content(request.registration.email)
+  end
+
+  scenario 'with confirmed email on the waiting list' do
+    create(:desk)
+    request = create(:request, status: 'confirmed')
+
+    visit root_path
+    within '#waiting-list' do
+      expect(page).to have_content(request.registration.email)
+    end
+  end
+
+  scenario 'request accepted, freelancer has a desk' do
     create(:desk)
     request = create(:request, status: 'confirmed')
     request.accept!
 
     visit root_path
 
-    expect(page).to have_content(request.registration.email)
+    within '#desks' do
+      expect(page).to have_content(request.registration.email)
+    end
   end
-
-  # scenario 'existing email' do
-  #   create(:registration, email: 'cool@beans.fr')
-
-  #   fill_in_form_with 'cool@beans.fr', 'Inou', 'Freelancer web dev learning french and code!', '+33712121212'
-
-  #   expect(page).to have_content('Email has already been taken')
-  # end
 
   # scenario 'invalid phone' do
   #   fill_in_form_with 'cool@beans.fr', 'Inou', 'Freelancer web dev learning french and code!', '+33212'
