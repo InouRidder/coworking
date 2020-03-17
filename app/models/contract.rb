@@ -26,7 +26,7 @@ class Contract < ApplicationRecord
   end
 
   def should_expire?
-    end_date > Date.today && paid?
+    end_date < Date.today && paid?
   end
 
   def should_be_renewed?

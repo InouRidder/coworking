@@ -4,7 +4,7 @@ RSpec.describe Contracts::RenewJob, type: :job do
   let(:job) { Contracts::RenewJob }
   let(:contract_to_be_renewed) { create(:contract, end_date: Date.today, status: 'paid') }
   let(:active_contract) { create(:contract, end_date: Date.today - 1.week, status: 'unpaid') }
-  let(:expired_contract) { create(:contract, status: 'paid', end_date: Date.today + 1.week) }
+  let(:expired_contract) { create(:contract, status: 'paid', end_date: Date.today - 1.week) }
 
   describe '#perform' do
     it 'should renew contracts of users that are still active' do
@@ -48,7 +48,11 @@ RSpec.describe Contracts::RenewJob, type: :job do
       }.to change { user.contracts.count }.by(0)
     end
 
-    it 'should free the desk to available again' do
+    it 'desk of an expired contract should be available' do
+      expired_contract
+      job.perform_now
+
+      expect(expired_contract.desk.available?).to be_truthy
     end
   end
 end
