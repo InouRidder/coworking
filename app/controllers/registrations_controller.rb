@@ -7,10 +7,10 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @registration = Registration.new(strong_params)
+    @registration = Registrations::CreateService.call(params: strong_params)
 
-    if Registrations::CreateService.call(@registration)
-      redirect_to root_path, notice: 'Succesfully created a registration'
+    if @registration.persisted?
+      redirect_to root_path, notice: "You're on the waiting list!"
     else
       render :new
     end
