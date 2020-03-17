@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Visitor joins the waiting list' do
+feature 'Freelancer joins the waiting list' do
   scenario 'with valid params' do
     fill_in_form_with 'valid@example.com', 'Inou', 'Freelancer web dev learning french and code!', '+33712121212'
 
