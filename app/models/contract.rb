@@ -9,8 +9,11 @@ class Contract < ApplicationRecord
 
   STATUSES = {
     paid: 'paid',
-    unpaid: 'unpaid'
+    unpaid: 'unpaid',
+    expired: 'expired'
   }
+
+  scope :renewable, -> { where("status != 'expired' ") }
 
   enum status: STATUSES
 
@@ -22,7 +25,12 @@ class Contract < ApplicationRecord
     self.total_price = duration_in_days * desk.price_per_day
   end
 
+  def should_expire?
+    end_date < Date.today && paid?
+  end
+
   def should_be_renewed?
+    # contract end dates are always set to Date.today.end_of_month, thus today's date is equal to the end of the month
     Date.today == end_date && user.active?
   end
 

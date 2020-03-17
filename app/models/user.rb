@@ -5,6 +5,7 @@
 # but should not relate to any data that can be created after a request is accepted.
 class User < ApplicationRecord
   belongs_to :registration
+  has_many :contracts
 
   STATUSES = {
     active: 'active',

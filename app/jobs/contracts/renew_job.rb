@@ -7,10 +7,10 @@ module Contracts
     queue_as :default
 
     def perform
-      Contract.all.each do |contract|
-        if contract.should_be_renewed?
-          contract.renew!
-        end
+      Contract.renewable.each do |contract|
+        contract.renew! if contract.should_be_renewed?
+
+        contract.expired! if contract.should_expire?
       end
     end
   end

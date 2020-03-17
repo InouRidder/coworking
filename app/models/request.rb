@@ -26,6 +26,6 @@ class Request < ApplicationRecord
   end
 
   def should_expire?
-    last_confirmed_at <= Date.today - 3.months
+    last_confirmed_at < Date.today - 3.months # no longer valid if not reconfirmed after 3 months
   end
 end
