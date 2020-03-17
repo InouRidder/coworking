@@ -24,11 +24,11 @@ gem 'simple_form'
 
 # email simulation
 gem 'letter_opener_web', '~> 1.0'
+gem 'factory_bot_rails'
 
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
-  gem 'factory_bot_rails'
   gem 'webdrivers', '~> 4.0'
   gem 'capybara'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
