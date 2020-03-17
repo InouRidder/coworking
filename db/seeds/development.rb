@@ -12,7 +12,7 @@ Registration.destroy_all
 
 puts 'Creating 30 Desks'
 
-30.times { FactoryBot.create(:desk) }
+10.times { FactoryBot.create(:desk) }
 
 puts 'Creating 50 requests & registrations'
 
