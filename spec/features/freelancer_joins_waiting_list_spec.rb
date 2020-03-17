@@ -4,7 +4,7 @@ feature 'Visitor joins the waiting list' do
   scenario 'with valid params' do
     fill_in_form_with 'valid@example.com', 'Inou', 'Freelancer web dev learning french and code!', '+33712121212'
 
-    expect(page).to have_content("You're on the waiting list")
+    expect(page).to have_content("Confirm your email to get on the waiting list")
   end
 
   scenario 'with invalid email' do
