@@ -13,7 +13,7 @@ class Registration < ApplicationRecord
 
   validates_presence_of :name, :bio
   validates :email, format: { with: Devise.email_regexp }
-  validates :bio, length: { minimum: 50 }
+  validates :bio, length: { minimum: 25 }
   validates :phone, phone: {
     possible: true,
     allow_blank: false,
