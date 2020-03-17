@@ -21,16 +21,7 @@
       <h1>
         Desks
       </h1>
-      <% @presenter.desks.each do |desk| %>
-        <div>
-          <%= desk.name %>
-          <% if desk.taken? %>
-             is used by <%= desk.current_user&.registration&.email %>
-          <% else %>
-              is free!
-          <% end %>
-        </div>
-      <% end %>
+      <%= render partial: 'desk', collection: @presenter.desks %>
     </div>
   </div>
 </div>

@@ -1,0 +1,8 @@
+<div class='desk'>
+  <%= desk.name %>
+  <% if desk.taken? %>
+     is used by <%= desk.current_user&.registration&.email %>
+  <% else %>
+      is free!
+  <% end %>
+</div>
