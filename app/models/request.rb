@@ -1,12 +1,12 @@
 # frozen_literal_string: true
 
-# Request objects keep track of the state of a requested registration for freelancers.
+# Request objects keep track of the state and position of a requested registration for freelancers.
 class Request < ApplicationRecord
   has_secure_token
 
   belongs_to :registration
 
-  scope :in_waiting_list_order, -> { order(created_at: :desc) }
+  scope :waiting_list, -> { confirmed.order(created_at: :desc) }
 
   STATUSES = {
     unconfirmed: 'unconfirmed',

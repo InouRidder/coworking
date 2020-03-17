@@ -16,5 +16,9 @@ class Desk < ApplicationRecord
     def any_available?
       any?(&:available?)
     end
+
+    def available
+      includes(:contracts).select(&:available?)
+    end
   end
 end
