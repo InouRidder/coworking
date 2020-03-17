@@ -1,12 +1,13 @@
-<div class="container">
+<div class="container py-2">
+  <h1>
+    Join the waiting list
+  </h1>
+  <p>
+    of our awesome coworking
+  </p>
   <div class="row">
-    <div class="col-12 col-md-6 col-md-offset-3">
-      <%= simple_form_for @registration do |f| %>
-        <%= f.input :email %>
-        <%= f.input :name %>
-        <%= f.input :bio %>
-        <%= f.input :phone %>
-      <% end %>
+    <div class="col-12 col-md-9 col-md-offset-3">
+      <%= render 'form', registration: @registration %>
     </div>
   </div>
 </div>

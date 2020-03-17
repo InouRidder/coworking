@@ -1,0 +1,7 @@
+<%= simple_form_for registration do |f| %>
+  <%= f.input :email %>
+  <%= f.input :name %>
+  <%= f.input :phone %>
+  <%= f.input :bio, as: :text %>
+  <%= f.submit 'Apply', class: 'btn btn-primary' %>
+<% end %>
