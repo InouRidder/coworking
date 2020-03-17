@@ -10,7 +10,7 @@
         Waiting list
       </h1>
       <ol>
-        <% @presenter.waiting_list.each_with_index do |request, index| %>
+        <% @presenter.waiting_list.each do |request| %>
           <li>
             <%= request.registration.email %>
           </li>
