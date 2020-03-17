@@ -10,11 +10,7 @@
         Waiting list
       </h1>
       <ol>
-        <% @presenter.waiting_list.each do |request| %>
-          <li>
-            <%= request.registration.email %>
-          </li>
-        <% end %>
+        <%= render partial: 'requests/request', collection: @presenter.waiting_list %>
       </ol>
     </div>
     <div class="col-12 col-sm-6">
