@@ -1,0 +1,37 @@
+<div class="container py-5">
+  <div class="row py-2">
+    <div class="col-12 d-flex d-flex justify-content-end">
+      <%= link_to 'Add me to the waiting list!', new_registration_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <h1>
+        Waiting list
+      </h1>
+      <ol>
+        <% @presenter.waiting_list.each_with_index do |request, index| %>
+          <li>
+            <%= request.registration.email %>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+    <div class="col-12 col-sm-6">
+      <h1>
+        Desks
+      </h1>
+      <% @presenter.desks.each do |desk| %>
+        <div>
+          <%= desk.name %>
+          <% if desk.taken? %>
+             is used by <%= desk.current_user&.registration&.email %>
+          <% else %>
+              is free!
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

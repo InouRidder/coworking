@@ -22,7 +22,6 @@ class Registration < ApplicationRecord
   }
 
   def after_confirmation
-    super
     request.confirmed!
   end
 end

@@ -7,7 +7,7 @@ module Requests
 
     def update
       Requests::UpdateService.call(@request)
-      head :no_content
+      redirect_to root_path, notice: 'Succesfully reconfirmed!'
     end
 
     private

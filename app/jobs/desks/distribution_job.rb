@@ -6,11 +6,11 @@ module Desks
     queue_as :default
 
     def perform
-      Request.confirmed.in_waiting_list_order.each do |request|
-        request.accept! # will break from execution  if there no is desk available
-
-        # I'm oke with this iterative query, assuming a coworking won't have that many desks
-        break unless Desk.any_available?
+      Desk.available.each do |_desk|
+        # Request#accept fetches the first available desk
+        # this could be optimized in terms of DB query,
+        # but I like the DSL as is
+        Request.waiting_list.first&.accept!
       end
     end
   end

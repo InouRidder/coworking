@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe RequestMailer, type: :mailer do
   let(:request) { create(:request, status: 'confirmed') }
-  let(:position) { Request.confirmed.in_waiting_list_order.index(request) + 1}
+  let(:position) { Request.waiting_list.index(request) + 1}
   let(:mail) { RequestMailer.with(request: request, position: position).send_confirm_interest }
   describe "send_confirm_interest" do
 

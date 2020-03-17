@@ -4,7 +4,7 @@ class CreateRequests < ActiveRecord::Migration[6.0]
       t.string :status, default: 'unconfirmed'
       t.references :registration
       t.string :token
-      t.date :last_confirmation_email_sent_at
+      t.date :last_confirmation_email_sent_at, default: -> { 'CURRENT_TIMESTAMP' }
       t.date :last_confirmed_at, default: -> { 'CURRENT_TIMESTAMP' }
 
       t.timestamps

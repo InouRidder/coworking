@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
     @registration = Registrations::CreateService.call(params: strong_params)
 
     if @registration.persisted?
-      redirect_to root_path, notice: "You're on the waiting list!"
+      redirect_to root_path, notice: "Confirm your email to get on the waiting list!"
     else
       render :new
     end
