@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <%= render 'layouts/components/flash' %>
     <%= yield %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
