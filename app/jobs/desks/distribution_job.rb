@@ -7,7 +7,9 @@ module Desks
 
     def perform
       Request.confirmed.in_waiting_list_order.each do |request|
-        request.accept! # will simply fail if there no is desk available
+        request.accept! # will break from execution  if there no is desk available
+
+        # I'm oke with this iterative query, assuming a coworking won't have that many desks
         break unless Desk.any_available?
       end
     end
